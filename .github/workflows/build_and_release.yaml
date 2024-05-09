@@ -36,7 +36,7 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        title: Release v{{ env.VERSION }}
+        title: Release v${{ env.VERSION }}
 
     # - name: Create GitHub Release
     #   id: create_release
