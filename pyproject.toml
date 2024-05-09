@@ -20,9 +20,11 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 keywords = ["ordinal", "list", "indexing", "python", "0-based", "1-based"]
-repository = "https://github.com/mrjsj/ordinal-list"
 license = { file="LICENSE" }
 readme = "README.md"
+
+[project.urls]
+Repository = "https://github.com/mrjsj/ordinal-list"
 
 [dependencies]
 python = "^3.8"
