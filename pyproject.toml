@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ordinal-list"
+version = "0.1.0"
+description = "A Python library that uses ordinal numbers to work with lists."
+authors = [
+    { name="Jimmy Jensen" }
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+keywords = ["ordinal", "list", "indexing", "python", "0-based", "1-based"]
+repository = "https://github.com/mrjsj/ordinal-list"
+license = { file="LICENSE" }
+readme = "README.md"
+
+[dependencies]
+python = "^3.8"
+
+[dev-dependencies]
+pytest = "^6.2.5"
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "src"
+]
+
+
