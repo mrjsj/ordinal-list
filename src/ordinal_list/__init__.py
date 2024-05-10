@@ -75,9 +75,9 @@ class OrdinalList(List[_T]):
         
         correct_suffix = (
             (last_two_digits in {"11", "12", "13"} and suffix == "th")
-            or (last_digit == '1' and suffix == 'st')
-            or (last_digit == '2' and suffix == 'nd')
-            or (last_digit == '3' and suffix == 'rd')
+            or (last_digit == '1' and suffix == 'st' and last_two_digits != "11")
+            or (last_digit == '2' and suffix == 'nd' and last_two_digits != "12")
+            or (last_digit == '3' and suffix == 'rd' and last_two_digits != "13")
             or (last_digit in {'0', '4', '5', '6', '7', '8', '9'} and suffix == 'th')
         )
         if not correct_suffix:
@@ -85,7 +85,6 @@ class OrdinalList(List[_T]):
         
         if number == 0:
             raise ValueError("You cannot take the 0th element of a sequence, dumbass.")
-        if number < 0:
-            return number
 
-        return number-1
+        return number if number < 0 else number-1
+

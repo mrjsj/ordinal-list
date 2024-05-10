@@ -64,6 +64,12 @@ def test_ordinal_list_invalid_suffix_for_number():
     ordinal_list = OrdinalList(["apple", "banana", "cherry"])
     with pytest.raises(ValueError):
         _ = ordinal_list["2st"]  # Incorrect suffix for the number
+    with pytest.raises(ValueError):
+        _ = ordinal_list["11st"]
+    with pytest.raises(ValueError):
+        _ = ordinal_list["12nd"]
+    with pytest.raises(ValueError):
+        _ = ordinal_list["13rd"]
 
 def test_ordinal_list_invalid_negative_ordinal():
     ordinal_list = OrdinalList(["apple", "banana", "cherry"])
