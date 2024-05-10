@@ -1,6 +1,13 @@
-from typing import List
+from typing import List, TypeVar
 
-class OrdinalList(List):
+__all__ = (
+    "OrdinalList",
+)
+
+_T = TypeVar("_T")
+
+
+class OrdinalList(List[_T]):
     """
     A custom list class that allows accessing elements using ordinal numbers as strings.
 
@@ -32,13 +39,13 @@ class OrdinalList(List):
         - does not represent an integer
         - or if the integer part of the ordinal is 0 (since there is no '0th' item).
     """
-    def __getitem__(self, ordinal: str):
+    def __getitem__(self, ordinal: str) -> _T:
         
         number = self._convert_ordinal(ordinal)
 
         return super().__getitem__(number)
 
-    def __setitem__(self, ordinal: str, value):
+    def __setitem__(self, ordinal: str, value: _T) -> None:
         
         number = self._convert_ordinal(ordinal)
 
