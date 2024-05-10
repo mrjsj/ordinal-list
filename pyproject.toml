@@ -7,7 +7,7 @@ name = "ordinal-list"
 version = "0.1.1"
 description = "A Python library that uses ordinal numbers to work with lists."
 authors = [
-    { name="Jimmy Jensen" }
+    { name = "Jimmy Jensen" },
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -20,21 +20,19 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 keywords = ["ordinal", "list", "indexing", "python", "0-based", "1-based"]
-license = { file="LICENSE" }
+license.file = "LICENSE"
 readme = "README.md"
+requires-python = ">=3.8"
 
 [project.urls]
 Repository = "https://github.com/mrjsj/ordinal-list"
 
-[dependencies]
-python = "^3.8"
-
-[dev-dependencies]
-pytest = "^6.2.5"
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.2.5",
+]
 
 [tool.pytest.ini_options]
 pythonpath = [
-  "src"
+  "src",
 ]
-
-
