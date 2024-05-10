@@ -1,7 +1,9 @@
 from typing import List, TypeVar
+from ordinal_list.utils import convert_number_to_ordinal, convert_ordinal_to_number, ordinal_range
 
 __all__ = (
     "OrdinalList",
+    "ordinal_range"
 )
 
 _T = TypeVar("_T")
@@ -41,50 +43,14 @@ class OrdinalList(List[_T]):
     """
     def __getitem__(self, ordinal: str) -> _T:
         
-        number = self._convert_ordinal(ordinal)
+        number = convert_ordinal_to_number(ordinal)
 
         return super().__getitem__(number)
 
     def __setitem__(self, ordinal: str, value: _T) -> None:
         
-        number = self._convert_ordinal(ordinal)
+        number = convert_ordinal_to_number(ordinal)
 
         return super().__setitem__(number, value)
 
-    @staticmethod
-    def _convert_ordinal(ordinal: str) -> int:
-
-        if not isinstance(ordinal, str):
-            raise ValueError("Argument 'ordinal' must be a string, e.g. '1st', '23rd' or '235th'!")
-
-        if len(ordinal) < 3:
-            raise ValueError("Argument 'ordinal' is too short to determine ordinal type")
-
-        number = ordinal[:-2]
-        last_digit = number[-1]
-        last_two_digits = number[-2:] if len(number) > 1 else ""
-        suffix = ordinal[-2:].lower()
-
-        try:
-            number = int(number)
-        except ValueError:
-            raise ValueError(f"`{number}` must be an integer!")
-        
-        if suffix not in {"st", "nd", "rd", "th"}:
-            raise ValueError("Ordinal number must end with 'st', 'nd', 'rd' or 'th'")
-        
-        correct_suffix = (
-            (last_two_digits in {"11", "12", "13"} and suffix == "th")
-            or (last_digit == '1' and suffix == 'st' and last_two_digits != "11")
-            or (last_digit == '2' and suffix == 'nd' and last_two_digits != "12")
-            or (last_digit == '3' and suffix == 'rd' and last_two_digits != "13")
-            or (last_digit in {'0', '4', '5', '6', '7', '8', '9'} and suffix == 'th')
-        )
-        if not correct_suffix:
-            raise ValueError("Suffix does not match the number. '1' must be followed by 'st', '2' must be followed by 'nd', etc.")
-        
-        if number == 0:
-            raise ValueError("You cannot take the 0th element of a sequence, dumbass.")
-
-        return number if number < 0 else number-1
 
