@@ -8,6 +8,12 @@ def test_ordinal_list_get_item():
     assert ordinal_list["3rd"] == "cherry"
     assert ordinal_list["-1st"] == "cherry"
 
+    ordinal_list.extend(range(4, 14))
+    assert ordinal_list["11th"] == 11
+    assert ordinal_list["12th"] == 12
+    assert ordinal_list["13th"] == 13
+    assert ordinal_list["-1st"] == 13
+
 def test_ordinal_list_set_item():
     ordinal_list = OrdinalList(["apple", "banana", "cherry"])
     ordinal_list["1st"] = "strawberry"
@@ -15,6 +21,14 @@ def test_ordinal_list_set_item():
 
     ordinal_list["-1st"] = "coconut"
     assert ordinal_list["-1st"] == "coconut"
+
+    ordinal_list.extend(range(4, 14))
+    ordinal_list["11th"] = "avocado"
+    ordinal_list["12th"] = "durian"
+    ordinal_list["13th"] = "passion fruit"
+    assert ordinal_list["11th"] == "avocado"
+    assert ordinal_list["12th"] == "durian"
+    assert ordinal_list["13th"] == "passion fruit"
 
 def test_ordinal_list_invalid_index():
     ordinal_list = OrdinalList(["apple", "banana", "cherry"])
