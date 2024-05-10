@@ -69,3 +69,18 @@ And you can extend the list with more items:
 >>> print(ordinal_list["5th"])
 mango
 ```
+
+There is also a great helper method for programatically iterating an OrdinalList:
+
+```python
+>>> from ordinal_list import ordinal_range
+
+>>> ordinal_list = OrdinalList(["apple", "banana", "cherry", "date", "elderberry"])
+>>> for ordinal in ordinal_range("1st", "5th"):
+>>>    print(ordinal_list[ordinal])
+apple
+banana
+cherry
+date
+elderberry
+```
